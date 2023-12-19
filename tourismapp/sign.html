@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function signup(){
+            let email=document.getElementById("mail").value;
+            let Phone_number=document.getElementById("phone").value;
+            let pass=document.getElementById("password").value;
+            let confirm_password=document.getElementById("confirm").value;
+
+            // Email Validation
+            let flag_mail=false;
+            for(let i=0;i<email.length;i++){
+                if(email[i]=='@'){
+                    flag_mail=true;
+                }
+            }
+
+            // Phone Number Validation 
+            let flag_phone=false;
+            if((6000000000<=Phone_number)&&(Phone_number<=9999999999)){
+                flag_phone=true;
+            }
+
+            // Password Validation
+            let len=pass.length;
+            let upper=0;
+            let lower=0;
+            let num=0;
+            let special=0;
+            let flag_pass=false;
+            for(let i=0;i<len;i++){
+                if(('A'<=pass[i])&&(pass[i]<='Z')){
+                    upper++;
+                }else if(('a'<=pass[i])&&(pass[i]<='z')){
+                    lower++;
+                }else if(('0'<=pass[i])&&(pass[i]<='9')){
+                    num++;
+                }else{
+                    special++
+                }
+            }
+            if((8<=len)&&(len<=16)&&(upper>=1)&&(lower>=1)&&(num>=1)&&(special>=1)){
+                flag_pass=true;
+            }
+
+            // Confirm Password Validation
+            let flag_confirm=false;
+            if(pass==confirm_password){
+                flag_confirm=true;
+            }
+
+            if((flag_phone==true)&&(flag_mail==true)&&(flag_pass==true)&&(flag_confirm==true)){
+                window.location.href="firstpage.html";
+            }else{
+                document.getElementById("error").innerHTML="Please Enter Valid Details !!!";
+            }
+        }
+    </script>
+
+    <style>
+        body{
+           background: linear-gradient(pink,silver,violet);
+           
+        }
+       fieldset{
+        border-style: dotted;
+        display: flex;
+        margin-top: 50px;
+        margin-left: 400px;
+        height: 550px;
+        width: 500px;
+        transition: 2s;
+        justify-content: center;
+       }
+       fieldset:hover{
+        border-color: aqua;
+        box-shadow: 0 0 90px white;
+        border-radius: 40px;
+        margin-top: 50px;
+        margin-left: 350px;
+        padding-left: 100px;
+        padding-right: 100px;
+        transition: 2s;
+        height: 600px;
+        width: 550px;
+       }
+       ::placeholder{
+        text-align: center;
+        font-size: medium;
+       }
+        #a1{
+            border: 1px black solid;
+            border-radius: 30px;
+            width: 170px;
+            height: 20px;
+
+        }
+input{
+    border: black;
+    border-radius: 50px;
+    width: 250px;
+    height: 25px;
+}
+        button{
+            margin-left: 150px ; 
+            background: radial-gradient( 100% 100% at 100% 0%, #89E5FF 0%, #e60b03 100% );
+                box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+                padding: 0 32px;
+                border-radius: 10px;
+                width: 100px;
+                height: 30px;
+                color: #fff;
+                  }
+                 #reset{
+            margin-left: 150px ; 
+            background: radial-gradient( 100% 100% at 100% 0%, #89E5FF 0%, #e60b03 100% );
+                box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+                padding: 0 32px;
+                border-radius: 10px;
+                width: 100px;
+                height: 30px;
+                color: #fff;
+                  }
+    sup{
+        color: red;
+    }
+        
+    </style>
+</head>
+<body >
+    <a href="./firstpage.html">Login</a>
+    <fieldset>
+    <legend style="margin: auto;color: white;letter-spacing: 10px;font-size: 20px;"><h1> AirTicket SignUp </h1></legend>
+    <table>
+    <tr>
+    <td><label for="">Name <sup>*</sup></label></td>
+    <td><input id="name" type="text" placeholder="Name"></td>
+    </tr>
+    <tr><tr></tr>
+    <td><label for="">Email <sup>*</sup></label></td>
+    <td><input id="mail" type="email" placeholder="Email"></td>
+    </tr>
+    <tr><tr></tr>
+    <td><label for="">Phone Number <sup>*</sup></label></td>
+    <td><input id="phone" type="number" placeholder="Phone Number"></td>
+    </tr>
+    <tr><tr></tr>
+    <td><label for="">Password <sup>*</sup></label></td>
+    <td><input id="password" type="password" placeholder="Password"></td>
+    </tr>
+    <tr><tr></tr>
+    <td><label for="">Confirm Password <sup>*</sup></label></td>
+    <td><input id="confirm" type="password" placeholder="Re-Enter the password"></td>
+    </tr>
+    <tr><tr></tr><tr><tr></tr></tr>
+    <td class="checkbox" style="font-size: larger;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+    <input style="width: 15px;" type="checkbox"> Terms and Conditions <sup>*</sup></td>
+    </tr>
+    <tr>
+    <td><p id="error"></p></td>
+    </tr><tr><tr></tr></tr>
+    <td style="padding-left: 50px;"><input id="reset" type="reset" value="Reset"></td>
+    <td><button id="signup" onclick="signup()">SignUp</button></td>
+    </tr>
+    </table>
+    </fieldset><br>
+<br><br><br><br><br>
+    
+</body>
+</html>
